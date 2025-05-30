@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Encontre Produtos no Seu Bairro</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #fafbfc;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #212a3a;
+    }
+    .container {
+      max-width: 460px;
+      margin: 40px auto 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 32px 0 #3b82f620;
+      padding: 32px 24px 24px 24px;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2rem;
+      color: #64748b;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .mockup-img {
+      display: block;
+      margin: 0 auto 28px auto;
+      width: 90%;
+      max-width: 320px;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px #3b82f630;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    label {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    input[type="text"], input[type="email"], select {
+      padding: 10px 12px;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #f8fafc;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="email"]:focus, select:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+    .role-select {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .role-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: 1.5px solid #2563eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      background: #e0e7ff;
+      color: #2563eb;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .role-btn.selected {
+      background: #2563eb;
+      color: #fff;
+    }
+    button[type="submit"] {
+      margin-top: 8px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 12px 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #2563eb20;
+      transition: background 0.2s;
+    }
+    button[type="submit"]:hover {
+      background: #1d4ed8;
+    }
+    .social-proof {
+      text-align: center;
+      color: #64748b;
+      font-size: 1rem;
+      margin-top: 20px;
+      margin-bottom: 16px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 28px;
+      color: #b1b5bb;
+      font-size: 0.96rem;
+    }
+    @media (max-width: 520px) {
+      .container {
+        padding: 18px 4vw 16px 4vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Encontre Produtos no Seu Bairro</h1>
+    <h2>Descubra, compartilhe e indique produtos em estabelecimentos locais — e seja recompensado!</h2>
+    <img class="mockup-img" src="PAINEL_DO_APP.png" alt="Mockup do aplicativo">
+
+    <form action="https://formsubmit.co/seuemail@seudominio.com" method="POST">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" required placeholder="Digite seu nome">
+
+      <label for="email">E-mail</label>
+      <input type="email" name="email" id="email" required placeholder="Digite seu e-mail">
+
+      <label for="bairro">Bairro</label>
+      <input type="text" name="bairro" id="bairro" placeholder="Ex: Savassi">
+
+      <label>Sua intenção</label>
+      <div class="role-select">
+        <input type="hidden" name="papel" id="papel" value="Usuário">
+        <button class="role-btn selected" type="button" onclick="selecionarPapel('Usuário')">Sou Usuário</button>
+        <button class="role-btn" type="button" onclick="selecionarPapel('Estabelecimento')">Tenho um Comércio</button>
+      </div>
+
+      <button type="submit">Quero participar!</button>
+    </form>
+
+    <div class="social-proof">
+      <strong>+10 estabelecimentos já confirmados no lançamento!</strong>
+    </div>
+
+    <div class="footer">
+      Dúvidas? WhatsApp: (31) 90000-0000 &nbsp;|&nbsp; @seuapp
+    </div>
+  </div>
+  <script>
+    // Alternar seleção de papel
+    function selecionarPapel(papel) {
+      document.getElementById('papel').value = papel;
+      const btns = document.querySelectorAll('.role-btn');
+      btns.forEach(btn => btn.classList.remove('selected'));
+      btns[papel === 'Usuário' ? 0 : 1].classList.add('selected');
+    }
+  </script>
+</body>
+</html>
